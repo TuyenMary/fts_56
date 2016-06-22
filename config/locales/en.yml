@@ -20,4 +20,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title:
+    framgia: "Framgia Testing System"
+  static_pages:
+    wellcome: "Wellcome to framgia testing system !"
+    signup: "Sign up now"
+  header:
+    content_header: "Framgia Test"
+    home: "Home"
+    login: "Login"
+  footer:
+    content: "Framgia Test"
