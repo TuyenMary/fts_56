@@ -61,3 +61,17 @@ ul.nav.navbar-nav.navbar-right li a {
 .nav > li > a:hover, .nav > li > a:focus {
   background-color:transparent;
 }
+.devise-content {
+  text-align: center;
+  padding-top: 80px;
+  height: 700px;
+}
+
+input{
+  width: 400px;
+}
+
+.field {
+  padding-bottom: 20px;
+}
+

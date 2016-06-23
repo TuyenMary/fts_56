@@ -29,5 +29,6 @@ en:
     content_header: "Framgia Test"
     home: "Home"
     login: "Login"
+    signout: "Sign out"
   footer:
     content: "Framgia Test"
