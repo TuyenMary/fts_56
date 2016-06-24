@@ -1,0 +1,21 @@
+<% provide:title, t("admin.subject.new") %>
+<div class="devise-content">
+  <h1><%= t "admin.subject.new" %></h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for [:admin, @subject] do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_field :description %>
+        </div>
+
+        <%= f.submit t("admin.subject.new"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

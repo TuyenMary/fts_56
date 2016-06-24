@@ -32,3 +32,12 @@ en:
     signout: "Sign out"
   footer:
     content: "Framgia Test"
+  admin:
+    subject:
+      subject: "Subject"
+      new: "Add subject"
+      allsubject: "All subjects"
+      edit: "Edit"
+      call: "Delete"
+      success: "sucsess"
+      danger: "Fail"
