@@ -1,0 +1,18 @@
+<div class="devise-content">
+  <% provide :title, t("views.user.alluser") %>
+  <h1><%= t "views.user.alluser" %></h1>
+    <table class="table table-striped">
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username %></td>
+          <td><%= link_to user.email %></td>
+          <% if can? :delete, user %>
+            <td><%= link_to t("views.user.delete"), admin_user_path(user), method: :delete,
+              data: {confirm: t("views.user.delete")}, class: "btn btn-sm btn-danger" %>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <%= paginate @users %>
+</div>

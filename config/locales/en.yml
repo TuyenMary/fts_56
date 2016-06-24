@@ -51,3 +51,8 @@ en:
       truncate: "..."
       first: "First"
       last: "Last"
+    user:
+      alluser: "All user"
+      delete: "Delete"
+      success: "Delete success"
+      danger: "Delete fail"
