@@ -6,6 +6,9 @@ class Admin::SubjectsController < ApplicationController
       .page(params[:page]).per Settings.number
   end
 
+  def show
+  end
+
   def new
     @subject = Subject.new
   end
@@ -19,6 +22,31 @@ class Admin::SubjectsController < ApplicationController
     else
       flash[:alert] = t "admin.subject.danger"
       render :new
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    authorize! :update, @subject
+    if @subject.update_attributes subject_params
+      flash[:notice] = t "admin.subject.success"
+      redirect_to admin_subject_path
+    else
+      flash[:alert] = t "admin.subject.danger"
+      redirect_to :back
+    end
+  end
+
+  def destroy
+    authorize! :destroy, @subject
+    if @subject.destroy
+      flash[:notice] = t "admin.subject.deletesuccess"
+      redirect_to admin_subjects_path
+    else
+      flash[:alert] = t "admin.subject.deletefail"
+      redirect_to :back
     end
   end
 

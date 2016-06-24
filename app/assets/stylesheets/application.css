@@ -75,3 +75,10 @@ input{
   padding-bottom: 20px;
 }
 
+.subject {
+  border: 1px solid #CCCCCC;
+}
+
+#name {
+  border-bottom: 1px solid #CCCCCC;
+}

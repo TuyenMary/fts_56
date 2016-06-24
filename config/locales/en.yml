@@ -41,6 +41,9 @@ en:
       call: "Delete"
       success: "sucsess"
       danger: "Fail"
+      savechange: "Save change"
+      deletesuccess: "Delete Success"
+      deletefail: "Delete fail"
   views:
     pagination:
       previous: "&lt; Previous"
