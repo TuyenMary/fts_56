@@ -24,16 +24,16 @@ header {
 .center {
   text-align: center;
   padding-top: 100px;
-  height: 500px;
 }
 
 footer {
   text-align: center;
   border-top: 1px solid #CCCCCC;
+  margin-top: 100px;
 }
 
 #content {
-  padding-top: 100px;
+  margin-top: 38px;
 }
 
 #content a {
