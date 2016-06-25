@@ -8,12 +8,17 @@
         <tr>
           <td><%= link_to subject.name %></td>
           <td><%= link_to subject.description %></td>
-          <td><%= link_to t("admin.subject.edit"), "#",
-            class:"btn btn-sm btn-info" %>
-          </td>
-          <td><%= link_to t("admin.subject.delete"), "#", method: :delete,
-            data: {confirm: t("admin.subject.call")}, class: "btn btn-sm btn-danger" %>
-          </td>
+          <% if can? :edit, subject %>
+            <td><%= link_to t("admin.subject.edit"), edit_admin_subject_path(subject),
+              class:"btn btn-sm btn-info" %>
+            </td>
+          <% end %>
+          <% if can? :destroy, subject %>
+            <td><%= link_to t("admin.subject.delete"), admin_subject_path(subject),
+              method: :delete, data: {confirm: t("admin.subject.call")},
+                class: "btn btn-sm btn-danger" %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </table>
