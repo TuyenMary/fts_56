@@ -5,7 +5,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t("header.home"), root_path %></li>
         <% if can? :manage, :all %>
-          <li><%= link_to t("admin.subject.subject"), new_admin_subject_path %></li>
+          <li><%= link_to t("admin.subject.subject"), admin_subjects_path %></li>
         <% end %>
         <% if user_signed_in? %>
           <li><%= link_to t("header.signout"), destroy_user_session_path, method: :delete %></li>

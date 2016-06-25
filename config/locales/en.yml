@@ -41,3 +41,10 @@ en:
       call: "Delete"
       success: "sucsess"
       danger: "Fail"
+  views:
+    pagination:
+      previous: "&lt; Previous"
+      next: "Next &gt;"
+      truncate: "..."
+      first: "First"
+      last: "Last"
