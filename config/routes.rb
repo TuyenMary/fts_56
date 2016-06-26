@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :exams, except: [:destroy]
+  resources :questions, only: [:new, :index, :create, :destroy]
+
   namespace :admin do
     root "subjects#index"
     resources :subjects

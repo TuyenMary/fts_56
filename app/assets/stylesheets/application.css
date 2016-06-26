@@ -62,7 +62,7 @@ ul.nav.navbar-nav.navbar-right li a {
   background-color:transparent;
 }
 .devise-content {
-  text-align: center;
+  text-align: left;
   padding-top: 80px;
   height: 700px;
 }
@@ -93,4 +93,11 @@ input.btn.btn-md.btn-primary {
 
 .container-fluid.text-center {
   margin-top: 81px;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

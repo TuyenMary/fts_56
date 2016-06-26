@@ -30,8 +30,22 @@ en:
     home: "Home"
     login: "Login"
     signout: "Sign out"
+    suggest_question: "Suggest Question"
   footer:
     content: "Framgia Test"
+  questions:
+      new:
+        btn_create: "Create"
+      index:
+        new_q: "New Question"
+        title: "Suggest question list"
+        confirm: "Are you sure?"
+        stt: "STT"
+        question: "Question"
+        subject: "Subject"
+        question_type: "Question Type"
+        state: "State"
+        action: "Action"
   admin:
     subject:
       subject: "Subject"

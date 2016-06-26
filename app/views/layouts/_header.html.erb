@@ -10,6 +10,7 @@
           <li><%= link_to t("header.home"), new_exam_path %></li>
         <% end %>
         <% if user_signed_in? %>
+          <li><%= link_to t(".suggest_question"), questions_path %></li>
           <li><%= link_to t("header.signout"), destroy_user_session_path, method: :delete %></li>
         <% else %>
           <li><%= link_to t("header.login"), new_user_session_path %>
