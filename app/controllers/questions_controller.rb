@@ -13,7 +13,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new question_params
+    custom_question_params = question_params.merge!(state: "waitting")
+    @question = Question.new custom_question_params
     if @question.save
       flash[:notice] = t "admin.subject.success"
       redirect_to questions_path
@@ -36,6 +37,6 @@ class QuestionsController < ApplicationController
   private
   def question_params
     params.required(:question).permit :content, :question_type, :subject_id,
-      :user_id, :state, answers_attributes: [:id, :correct, :content, :_destroy]
+      :user_id, answers_attributes: [:id, :correct, :content, :_destroy]
   end
 end

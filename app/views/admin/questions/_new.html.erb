@@ -1,0 +1,44 @@
+<div class="content container ">
+  <div class="col-md-10 col-md-offset-1 width-flash">
+  </div>
+  <div class="row devise-content">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for [:admin, @question] do |f| %>
+        <%= render "shared/error_messages", object: @question %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :state %>
+
+        <%= f.label :Subject %>
+        <%= f.select :subject_id,
+          options_from_collection_for_select(@subjects, :id, :name,
+            params[:subject_id]), {}, {class: "form-control"} %>
+
+        <%= f.label :content %>
+        <%= f.text_area :content, class: "form-control" %>
+
+        <%= f.label :question_type %>
+        <%= f.select :question_type, Question.question_types.keys.to_a, {},
+          {class: "form-control"} %>
+
+        <%= f.label :option %>
+        <div id="choice">
+          <div id="answers">
+            <%= f.fields_for :answers do |answer| %>
+              <div class="answers">
+                <%= render "answer_form", f: answer %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-offset-0 col-md-3">
+            <%= link_to_add_fields raw("#{t :add}"), f, :answers %>
+             <br>
+          </div>
+        </div>
+
+        <div class="row">
+          <%= f.submit t("admin.question.btn_create"), class: "btn btn-primary col-md-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -110,3 +110,23 @@ ul.dropdown-menu {
 ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
   background-color:transparent;
 }
+
+#newquestion {
+  display: none;
+}
+
+.new-question {
+  float: left;
+  color: #428bca;
+}
+
+.tableshow {
+  width: 100%;
+  tr {
+    margin-bottom: 20px;
+  }
+}
+
+.attr-content {
+  width: 40%;
+}
