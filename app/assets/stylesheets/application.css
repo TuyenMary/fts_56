@@ -82,3 +82,15 @@ input{
 #name {
   border-bottom: 1px solid #CCCCCC;
 }
+
+select#exam_subject_id {
+  width: 150px;
+}
+
+input.btn.btn-md.btn-primary {
+  width: 100px;
+}
+
+.container-fluid.text-center {
+  margin-top: 81px;
+}

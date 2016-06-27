@@ -3,9 +3,11 @@
     <%= link_to t("header.content_header"), "#", id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t("header.home"), root_path %></li>
         <% if can? :manage, :all %>
           <li><%= link_to t("admin.subject.subject"), admin_subjects_path %></li>
+          <li><%= link_to t("header.home"), admin_root_path %></li>
+        <% else %>
+          <li><%= link_to t("header.home"), new_exam_path %></li>
         <% end %>
         <% if user_signed_in? %>
           <li><%= link_to t("header.signout"), destroy_user_session_path, method: :delete %></li>

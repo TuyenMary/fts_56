@@ -3,7 +3,7 @@ class CreateExams < ActiveRecord::Migration
     create_table :exams do |t|
       t.references :subject, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
-      t.integer :status
+      t.integer :status, default: 1
       t.integer :duration
       t.integer :question_number
 
