@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 20160623145638) do
   create_table "exams", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "user_id"
-    t.integer  "status"
+    t.integer  "status",          default: 1
     t.integer  "duration"
     t.integer  "question_number"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "exams", ["subject_id", "user_id"], name: "index_exams_on_subject_id_and_user_id", unique: true

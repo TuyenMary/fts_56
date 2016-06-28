@@ -1,0 +1,7 @@
+<div class="devise-content">
+  <%= form_tag exams_path, method: :post do %>
+    <%= select_tag "exam[subject_id]",
+      options_from_collection_for_select(@subject, :id, :name, params[:subject_id]) %>
+    <%= submit_tag t("views.user.create"), class: "btn btn-md btn-primary" %>
+  <% end %>
+</div>

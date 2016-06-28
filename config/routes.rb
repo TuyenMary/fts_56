@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :users
+  resources :exams, except: [:destroy]
   namespace :admin do
     root "subjects#index"
     resources :subjects

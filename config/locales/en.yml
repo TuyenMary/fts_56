@@ -56,3 +56,4 @@ en:
       delete: "Delete"
       success: "Delete success"
       danger: "Delete fail"
+      create: "Create Exam"

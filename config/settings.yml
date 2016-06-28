@@ -1,1 +1,8 @@
 number: 5
+status:
+  start: 1
+  unchecked: 2
+  checked: 3
+question_number: 60
+duration1: 30
+duration2: 20
