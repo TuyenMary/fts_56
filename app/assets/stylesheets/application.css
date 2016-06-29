@@ -65,6 +65,7 @@ ul.nav.navbar-nav.navbar-right li a {
   text-align: left;
   padding-top: 80px;
   height: 700px;
+  margin-left: 389px;
 }
 
 input{
@@ -100,4 +101,12 @@ input.btn.btn-md.btn-primary {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+ul.dropdown-menu {
+  background-color: #660066;
+}
+
+ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
+  background-color:transparent;
 }
