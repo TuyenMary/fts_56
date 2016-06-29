@@ -1,6 +1,10 @@
 class Question < ActiveRecord::Base
+  include PublicActivity::Model
+
   enum state: [:waitting, :accepted]
   enum question_type: [:single, :multiple, :text]
+
+  tracked owner: ->(controller, model) {controller && controller.current_user}
 
   belongs_to :subject
   belongs_to :user
