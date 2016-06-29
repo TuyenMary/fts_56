@@ -28,11 +28,17 @@
               <td><%= question.question_type %></td>
               <td class="btn btn-warning disabled"><%= question.state %></td>
               <td>
-                <%= link_to "", "#",
+                <%= link_to "", edit_admin_question_path(question),
                   class: "glyphicon glyphicon-edit icon-padding link-underline" %>
-                <%= link_to "", "#", method: :delete, data:
+                <%= link_to "", admin_question_path(question), method: :delete, data:
                   {confirm: t("admin.question.confirm")}, class:
                     "glyphicon glyphicon-trash icon-padding link-underline" %>
+                <% if question.waitting? %>
+                  <%= form_for [:admin, question] do |f| %>
+                    <%= f.hidden_field :state, value: :accepted %>
+                    <%= f.submit t("admin.question.accept"), class: "col-md-8 btn btn-success" %>
+                  <% end %>
+                <% end %>
               </td>
             </tr>
           </tbody>
