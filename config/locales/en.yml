@@ -31,6 +31,8 @@ en:
     login: "Login"
     signout: "Sign out"
     suggest_question: "Suggest Question"
+    profile: profile
+    edit: Edit
   footer:
     content: "Framgia Test"
   questions:
@@ -71,3 +73,12 @@ en:
       success: "Delete success"
       danger: "Delete fail"
       create: "Create Exam"
+      users: "Users"
+  registrations:
+    edit: "Edit"
+    update: "Update"
+    cancel_my_account: "Cancel my Acount"
+    confirmation: "Are you sure"
+    back: "Back"
+    unhappy: "Unhappy"
+    watting: "(we need your current password to confirm your changes)"
