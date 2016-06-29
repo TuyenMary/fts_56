@@ -60,6 +60,11 @@ en:
       savechange: "Save change"
       deletesuccess: "Delete Success"
       deletefail: "Delete fail"
+    question:
+      title: "Question List"
+      new_q: "New Question"
+      btn_create: "Create"
+      confirm: "Are you sure?"
   views:
     pagination:
       previous: "&lt; Previous"

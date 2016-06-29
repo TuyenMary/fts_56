@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="content container">
+      <h1><%= t "admin.question.question" %></h1>
+      <div class="col-md-8 col-md-offset-2">
+        <table id="table-show" class="tableshow">
+          <tbody>
+            <tr>
+              <td class="attr-content"><b><%= t "admin.question.content" %></b></td>
+              <td><%= @question.content %></td>
+            </tr>
+            <tr>
+              <td class="attr-content"><b><%= t "admin.question.anwser" %></b></td>
+              <td><table id="table-show-render" class="tableshow">
+                <tbody>
+                <% @question.answers.each do |answer| %>
+                  <tr>
+                    <td><%= answer.content %></td>
+                    <td><label class="label label-danger"><%= answer.correct %></label></td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table></td>
+            </tr>
+              <td class="attr-content"><b><%= t "admin.question.subject" %></b></td>
+              <td><%= @question.subject.name %></td>
+            <tr>
+              <td class="attr-content"><b><%= t "admin.question.question_type" %></b></td>
+              <td><%= @question.question_type %></td>
+            </tr>
+            <tr>
+              <td class="attr-content"><b><%= t "admin.question.state" %></b></td>
+              <td><label class="label label-warning"><%= @question.state %></label></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= link_to t("admin.question.edit"), "#",
+          class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
+        <%= link_to t("admin.question.delete"), "#",
+          class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
+      </div>
+  </div>
+</div>

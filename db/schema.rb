@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(version: 20160623145638) do
     t.string   "content"
     t.integer  "subject_id"
     t.integer  "user_id"
-    t.integer  "state",         default: 0
+    t.integer  "state"
     t.integer  "question_type"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "questions", ["subject_id"], name: "index_questions_on_subject_id"

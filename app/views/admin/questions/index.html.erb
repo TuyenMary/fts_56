@@ -1,0 +1,47 @@
+<div class="content container">
+  <div class="col-md-10 col-md-offset-1 width-flash">
+  </div>
+  <div class="row" id="question">
+    <div class="col-md-10 col-md-offset-1">
+      <span>
+        <a href="#"><h1 class="new-question"><%= t "admin.question.new_q" %></h1></a>
+        <h1><%= t "admin.question.title" %></h1>
+      </span>
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t ".stt" %></th>
+            <th><%= t ".question" %></th>
+            <th><%= t ".subject" %></th>
+            <th><%= t ".question_type" %></th>
+            <th><%= t ".state" %></th>
+            <th><%= t ".action" %></th>
+          </tr>
+        </thead>
+        <% @questions.each_with_index do |question, index| %>
+          <tbody>
+            <tr>
+              <td><%= index %></td>
+              <div class="truncate"><td><%= link_to question.content,
+                admin_question_path(question) %></td></div>
+              <td><%= question.subject.name %></td>
+              <td><%= question.question_type %></td>
+              <td class="btn btn-warning disabled"><%= question.state %></td>
+              <td>
+                <%= link_to "", "#",
+                  class: "glyphicon glyphicon-edit icon-padding link-underline" %>
+                <%= link_to "", "#", method: :delete, data:
+                  {confirm: t("admin.question.confirm")}, class:
+                    "glyphicon glyphicon-trash icon-padding link-underline" %>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
+      <%= paginate @questions %>
+    </div>
+  </div>
+  <div class="row" id="newquestion">
+    <%= render "new" %>
+  </div>
+</div>

@@ -8,3 +8,8 @@ this.add_fields = (link, association, content) ->
   regexp = new RegExp('new_' + association, 'g')
   $(link).parent().before content.replace(regexp, new_id)
   return
+
+$(document).ready ->
+  $('.new-question').click ->
+    $('#newquestion').slideToggle 'fast'
+    return
