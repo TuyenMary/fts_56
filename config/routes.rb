@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root "subjects#index"
     resources :subjects
-    resources :questions, only: [:index, :create, :show]
+    resources :questions
     resources :users
   end
 end

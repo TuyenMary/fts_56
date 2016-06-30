@@ -33,9 +33,9 @@
             </tr>
           </tbody>
         </table>
-        <%= link_to t("admin.question.edit"), "#",
+        <%= link_to t("admin.question.edit"), edit_admin_question_path(@question),
           class: "btn btn-primary glyphicon glyphicon-pencil btn-width" %>
-        <%= link_to t("admin.question.delete"), "#",
+        <%= link_to t("admin.question.delete"), admin_question_path(@question),
           class: "btn btn-danger glyphicon glyphicon-trash btn-width" %>
       </div>
   </div>

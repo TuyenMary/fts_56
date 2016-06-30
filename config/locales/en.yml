@@ -64,7 +64,9 @@ en:
       title: "Question List"
       new_q: "New Question"
       btn_create: "Create"
+      btn_update: "Update"
       confirm: "Are you sure?"
+      accept: "Accept"
   views:
     pagination:
       previous: "&lt; Previous"
