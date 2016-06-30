@@ -5,6 +5,16 @@ class ExamsController < ApplicationController
   def new
     @exam = Exam.new
     @subject = Subject.all
+    @exams = Exam.all
+  end
+
+  def show
+    if @exam.start?
+      @time_start = Time.now.to_i
+      @exam.update_attributes time_start: @time_start, status: :testing
+    else
+      @time_start = @exam.time_start
+    end
   end
 
   def create

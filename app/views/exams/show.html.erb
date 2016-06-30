@@ -1,0 +1,23 @@
+<h4>
+  <%= t ".created_at" %>
+  <%= @exam.created_at %>
+</h4>
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <%= form_for @exam do |f| %>
+      <ol>
+        <%= f.fields_for :results do |result| %>
+          <%= render "question", f: result %>
+        <% end %>
+      </ol>
+    <% end %>
+  </div>
+  <div class="col-md-2 col-md-offset-1">
+    <h4><%= t ".time_remain" %></h4>
+    <p id="clock" data-time-limit="<%= @exam.duration %>"
+      data-time-start="<%= @time_start %>"
+      data-time-now="<%= Time.now.to_i %>"
+      data-status="<%= @exam.status %>"></p>
+    <p id="finish">
+  </div>
+</div>
