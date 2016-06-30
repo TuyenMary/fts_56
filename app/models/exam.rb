@@ -13,6 +13,8 @@ class Exam < ActiveRecord::Base
 
   before_create :create_questions
 
+  accepts_nested_attributes_for :results
+
   private
   def create_questions
     self.questions = subject.questions.all

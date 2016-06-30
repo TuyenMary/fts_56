@@ -3,7 +3,7 @@
   <table class="table table-striped">
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.username %></td>
+        <td><%= link_to user.username, user_path(user) %></td>
         <td><%= link_to user.email %></td>
         <% if can? :delete, user %>
           <td><%= link_to t("views.user.delete"), admin_user_path(user), method: :delete,

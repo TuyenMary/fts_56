@@ -131,3 +131,7 @@ ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
 .attr-content {
   width: 40%;
 }
+
+.activity a {
+  text-decoration: none;
+}

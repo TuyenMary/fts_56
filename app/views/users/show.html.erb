@@ -1,0 +1,19 @@
+<% provide :title, @user.username %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @user.username %>
+      </h1>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <section class="activities">
+      <% if user_signed_in? %>
+        <div class="activity">
+          <%= render "shared/activities" %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>
