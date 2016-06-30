@@ -43,9 +43,11 @@ ActiveRecord::Schema.define(version: 20160629070906) do
   create_table "exams", force: :cascade do |t|
     t.integer  "subject_id"
     t.integer  "user_id"
-    t.integer  "status",          default: 1
+    t.integer  "status",          default: 0
     t.integer  "duration"
     t.integer  "question_number"
+    t.integer  "time_start"
+    t.integer  "time_end"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

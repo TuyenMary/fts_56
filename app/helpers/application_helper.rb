@@ -22,4 +22,12 @@ module ApplicationHelper
     link_to name, "#", onclick: "return add_fields(this, \"#{association}\",
       \"#{escape_javascript(fields)}\")", class: "btn btn-info btn-block"
   end
+
+  def start_time exam
+    if exam.start? or exam.time_end.nil?
+      content_tag :p, "00:00:00"
+    else
+      spent_time exam
+    end
+  end
 end
