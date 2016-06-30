@@ -1,9 +1,13 @@
 class Exam < ActiveRecord::Base
+  include PublicActivity::Model
+
   belongs_to :subject
   belongs_to :user
 
   has_many :results, dependent: :destroy
   has_many :questions, through: :results
+
+  tracked  owner: ->(controller, model) {controller && controller.current_user}
 
   before_create :create_questions
 
