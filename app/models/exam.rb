@@ -1,7 +1,7 @@
 class Exam < ActiveRecord::Base
   include PublicActivity::Model
 
-  enum status: [:start, :testing, :uncheck, :checked]
+  enum status: [:start, :testing, :saved, :uncheck, :checked]
 
   belongs_to :subject
   belongs_to :user

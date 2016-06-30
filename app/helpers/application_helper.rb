@@ -30,4 +30,13 @@ module ApplicationHelper
       spent_time exam
     end
   end
+
+  def spent_time exam
+    if exam.time_end - exam.time_start < exam.duration * Settings.MINUTE
+      time = exam.time_end - exam.time_start
+    else
+      time = exam.duration * Settings.MINUTE
+    end
+    Time.at(time).utc.strftime I18n.t("exams.format_time")
+  end
 end

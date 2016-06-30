@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     else
       can :read, Subject
-      can [:create, :show], Exam
+      can [:create, :show, :read, :update], Exam
     end
   end
 end
