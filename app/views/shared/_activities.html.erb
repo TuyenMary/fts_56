@@ -1,0 +1,6 @@
+<div class="col-md-8">
+   <% @activities.each do |activity| %>
+      <%= render "shared/activity", activity: activity %>
+   <% end %>
+   <%= paginate @activities %>
+</div>

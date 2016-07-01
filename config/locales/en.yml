@@ -89,3 +89,8 @@ en:
     back: "Back"
     unhappy: "Unhappy"
     watting: "(we need your current password to confirm your changes)"
+  activity:
+    create: "has created"
+    edit: "has edited"
+    destroy: "has deleted"
+    ago: "ago"
