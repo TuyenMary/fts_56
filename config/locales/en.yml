@@ -103,3 +103,5 @@ en:
     ago: "ago"
   signin:
     facebook: "Sign in with Facebook"
+  mailers:
+    inform: "Please do exam you were created!"
