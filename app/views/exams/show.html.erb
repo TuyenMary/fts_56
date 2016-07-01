@@ -10,6 +10,13 @@
           <%= render "question", f: result %>
         <% end %>
       </ol>
+      <div class="row">
+        <% if @exam.testing? or @exam.saved? %>
+          <%= f.submit :saved, class: "col-sm-1 col-sm-offset-1" %>
+          <%= f.submit :finish, id: "finish",
+            class: "col-sm-2 col-sm-offset-8" %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <div class="col-md-2 col-md-offset-1">

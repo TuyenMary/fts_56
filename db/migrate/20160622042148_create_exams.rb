@@ -11,6 +11,5 @@ class CreateExams < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :exams, [:subject_id, :user_id], unique: true
   end
 end

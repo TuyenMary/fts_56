@@ -5,7 +5,7 @@ class ExamsController < ApplicationController
   def new
     @exam = Exam.new
     @subject = Subject.all
-    @exams = Exam.all
+    @exams = current_user.exams
   end
 
   def show
@@ -20,16 +20,29 @@ class ExamsController < ApplicationController
   def create
     @exam = current_user.exams.new exam_params
     if @exam.save
-      flash[:notice] = t "views.user.success"
-      redirect_to root_path
+      flash[:notice] = t "exams.show.success"
+      redirect_to new_exam_path
     else
-      flash[:alert] = t "views.user.danger"
+      flash[:alert] = t "exams.show.fail"
+      redirect_to :back
+    end
+  end
+
+  def update
+    @exam.status = params[:commit] == "finish" ? :uncheck : :saved
+    @exam.time_end = Time.now.to_i
+    if @exam.update_attributes exam_params
+      flash.now[:success] = t "exams.show.success"
+      redirect_to new_exam_path
+    else
+      flash.now[:danger] = t "exams.show.fail"
       redirect_to :back
     end
   end
 
   private
   def exam_params
-    params.require(:exam).permit :subject_id
+    params.require(:exam).permit :subject_id,
+      results_attributes: [:id, :answer_id]
   end
 end

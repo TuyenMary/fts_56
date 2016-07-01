@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= @exams.each do |exam| %>
+          <% @exams.each do |exam| %>
           <tr>
             <td><%= exam.created_at %></td>
             <td><%= exam.subject.name %></td>
@@ -36,8 +36,11 @@
             <% elsif exam.testing? %>
               <td><%= link_to t("admin.exams.view"), exam_path(exam),
                 class: "col-md-8 btn btn-warning" %></td>
+            <% elsif exam.saved? %>
+              <td><%= link_to t("admin.exams.view"), exam_path(exam),
+                class: "col-md-8 btn btn-warning" %></td>
             <% elsif exam.uncheck? %>
-              <td><%= link_to t("admin.exams.view"), "",
+              <td><%= link_to t("admin.exams.view"), exam_path(exam),
                 class: "col-md-8 btn btn-success" %></td>
             <% end %>
           </tr>

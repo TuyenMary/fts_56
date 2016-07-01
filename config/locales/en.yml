@@ -48,6 +48,13 @@ en:
         question_type: "Question Type"
         state: "State"
         action: "Action"
+  exams:
+    show:
+      save: "Save"
+      finish: "Finish"
+      success: "Success"
+      fail: "Fail"
+    format_time: "%H:%M:%S"
   admin:
     subject:
       subject: "Subject"
