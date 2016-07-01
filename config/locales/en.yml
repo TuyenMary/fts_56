@@ -101,3 +101,5 @@ en:
     edit: "has edited"
     destroy: "has deleted"
     ago: "ago"
+  signin:
+    facebook: "Sign in with Facebook"
