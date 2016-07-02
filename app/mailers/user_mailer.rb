@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+
   def inform_user_do_exam user, exam
     @user = user
     mail to: user.email, subject: t("mailers.inform")
@@ -14,7 +15,13 @@ class UserMailer < ApplicationMailer
     @users = User.all
     @users.each do |user|
       @exams = Exam.statistic_exam user.id, Date.today
-      mail to: user.mail, subject: t "mailers.statistic"
+      mail to: user.mail, subject: t("mailers.statistic")
     end
+  end
+
+  def send_exam_result exam
+    @exam = exam
+    @user = exam.user
+    mail to: @user.email, subject: t("views.mail.thanh_for_task")
   end
 end

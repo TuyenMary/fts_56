@@ -1,0 +1,10 @@
+<h2><%= t "view.mail.hi" %><span><%= @user.username %></span></h2>
+<p><%= t "views.mail.thanks_for_test" %></p>
+<p>
+  <%= t "views.mail.your_score" %>
+  <span class="score_exam">
+    <%= @exam.results.correct_answers.size %>|
+    <%= @exam.question_number %>
+  </span>
+</p>
+<p><%= t "views.mail.have_niceday" %></p>

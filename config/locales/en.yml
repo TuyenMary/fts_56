@@ -95,6 +95,11 @@ en:
       danger: "Delete fail"
       create: "Create Exam"
       users: "Users"
+    email:
+      hi: "Hi"
+      thank_for_test: "Thank you for testing"
+      your_score: "Your score is :"
+      have_niceday: "Have a nice day"
   registrations:
     edit: "Edit"
     update: "Update"
