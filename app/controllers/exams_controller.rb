@@ -5,7 +5,8 @@ class ExamsController < ApplicationController
   def new
     @exam = Exam.new
     @subject = Subject.all
-    @exams = current_user.exams
+    @exams = current_user.exams.order(created_at: :desc).page(params[:page])
+      .per Settings.number
   end
 
   def show
