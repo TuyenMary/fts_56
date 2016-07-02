@@ -249,6 +249,22 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+  config.warden do |manager|
+    Warden::Manager.after_set_user except: :fetch do |record, warden, options|
+      if record.respond_to?(:update_tracked_fields!)
+        && warden.authenticated?(options[:scope])
+        if record.admin?
+          Rails.logger.info t "admin.login_log"
+        end
+      end
+    end
+
+    Warden::Manager.before_logout do |record, warden, options|
+      if record.admin?
+        Rails.logger.info t "admin.logout_log"
+      end
+    end
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
