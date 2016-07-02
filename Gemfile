@@ -20,6 +20,7 @@ gem "cancancan", "~> 1.10"
 gem "public_activity"
 gem "omniauth"
 gem "omniauth-facebook"
+gem "social-share-button"
 
 group :development, :test do
   gem "sqlite3"

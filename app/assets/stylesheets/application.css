@@ -11,10 +11,12 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require social-share-button
  *= require_self
  */
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import "social-share-button";
 
 header {
   background-color: #660066;
@@ -134,4 +136,13 @@ ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
 
 .activity a {
   text-decoration: none;
+}
+
+$size: 50px;
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }

@@ -109,3 +109,5 @@ en:
     facebook: "Sign in with Facebook"
   mailers:
     inform: "Please do exam you were created!"
+  network:
+    share: "Sharing"
