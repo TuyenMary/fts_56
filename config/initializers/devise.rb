@@ -251,8 +251,7 @@ Devise.setup do |config|
   # end
   config.warden do |manager|
     Warden::Manager.after_set_user except: :fetch do |record, warden, options|
-      if record.respond_to?(:update_tracked_fields!)
-        && warden.authenticated?(options[:scope])
+      if record.respond_to?(:update_tracked_fields!) && warden.authenticated?(options[:scope])
         if record.admin?
           Rails.logger.info t "admin.login_log"
         end
