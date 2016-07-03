@@ -64,11 +64,11 @@ ActiveRecord::Schema.define(version: 20160701124738) do
     t.integer  "question_number"
     t.integer  "time_start"
     t.integer  "time_end"
+    t.integer  "score"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "exams", ["subject_id", "user_id"], name: "index_exams_on_subject_id_and_user_id", unique: true
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
   add_index "exams", ["user_id"], name: "index_exams_on_user_id"
 
