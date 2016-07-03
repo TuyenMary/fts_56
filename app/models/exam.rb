@@ -21,6 +21,10 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :results
 
+  scope :search_exams, -> do
+    where exams:{status: 3}
+  end
+
   private
   def create_questions
     self.questions = subject.questions.all

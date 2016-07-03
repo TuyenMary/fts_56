@@ -29,7 +29,14 @@
             <td><%= exam.duration %></td>
             <td><%= exam.question_number %></td>
             <td><%= start_time exam %></td>
-            <td></td>
+            <% if exam.checked? %>
+              <td>
+                <%= exam.results.correct_answers.size %>/
+                <%= exam.question_number %>
+              </td>
+            <% else %>
+              <td><%= Settings.score %>/<%= exam.question_number %></td>
+            <% end %>
             <% if exam.start? %>
               <td><%= link_to t("admin.exams.start"), exam_path(exam),
                 class: "col-md-8 btn btn-primary" %></td>
