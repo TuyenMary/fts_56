@@ -21,6 +21,7 @@ gem "public_activity"
 gem "omniauth"
 gem "omniauth-facebook"
 gem "social-share-button"
+gem "whenever", require: false
 
 group :development, :test do
   gem "sqlite3"

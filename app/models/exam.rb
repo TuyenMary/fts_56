@@ -11,6 +11,10 @@ class Exam < ActiveRecord::Base
 
   tracked  owner: ->(controller, model) {controller && controller.current_user}
 
+  scope :statistic_exam, -> (user_id, time_month) {where("user_id = ? and
+    created_at >= ? and created_at < ?", user_id, time_month.beginning_of_month,
+    time_month.end_of_month)}
+
   before_create :create_questions
   after_save :inform_of_user
   after_update :calculate_time_from_create_to_update

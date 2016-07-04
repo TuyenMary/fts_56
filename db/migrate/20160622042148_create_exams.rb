@@ -8,6 +8,7 @@ class CreateExams < ActiveRecord::Migration
       t.integer :question_number
       t.integer :time_start
       t.integer :time_end
+      t.integer :score
 
       t.timestamps null: false
     end

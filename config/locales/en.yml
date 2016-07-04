@@ -111,5 +111,9 @@ en:
     inform: "Please do exam you were created!"
     greeting: "Hello,"
     notify: "One subject have just created, let's do it!"
+    statistic: "Statistic Exam"
+    exam_name: "Name"
+    score: "Score"
+    statistic_exam_desc: "Function has ability to sent statistic exam"
   network:
     share: "Sharing"
