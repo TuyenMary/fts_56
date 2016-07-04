@@ -1,0 +1,39 @@
+<div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t "admin.exams.created_date" %></th>
+            <th><%= t "admin.exams.subject" %></th>
+            <th><%= t "admin.exams.status" %></th>
+            <th><%= t "admin.exams.duration" %></th>
+            <th><%= t "admin.exams.question_number" %></th>
+            <th><%= t "admin.exams.spent_time" %></th>
+            <th><%= t "admin.exams.score" %></th>
+            <th><%= t "admin.exams.check" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @exams.each do |exam| %>
+          <tr>
+            <td><%= exam.created_at %></td>
+            <td><%= exam.subject.name %></td>
+            <td><label class="label label-success"><%= exam.status %></label></td>
+            <td><%= exam.duration %></td>
+            <td><%= exam.question_number %></td>
+            <td><%= start_time exam %></td>
+            <% if exam.uncheck? %>
+              <td>
+                <%= exam.results.correct_answers.size %>|
+                <%= exam.question_number %>
+              </td>
+              <%= form_tag admin_exam_path(exam), method: :put do %>
+                <td><%= submit_tag :checked,
+                  class: "col-md-8 btn btn-success" %></td>
+              <% end %>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @exams %>
+    </div>

@@ -6,6 +6,7 @@
         <% if can? :manage, :all %>
           <li><%= link_to t("admin.subject.subject"), admin_subjects_path %></li>
           <li><%= link_to t("header.home"), admin_root_path %></li>
+          <li><%= link_to t("admin.exams.exam"), admin_exams_path %></li>
         <% else %>
           <li><%= link_to t("header.home"), new_exam_path %></li>
         <% end %>
