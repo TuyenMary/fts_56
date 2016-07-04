@@ -26,10 +26,12 @@
                 <%= exam.results.correct_answers.size %>|
                 <%= exam.question_number %>
               </td>
-              <%= form_tag admin_exam_path(exam), method: :put do %>
-                <td><%= submit_tag :checked,
-                  class: "col-md-8 btn btn-success" %></td>
-              <% end %>
+              <td>
+                <%= form_tag admin_exam_path(exam), method: :put do %>
+                  <%= submit_tag :checked,
+                    class: "col-md-8 btn btn-success" %>
+                <% end %>
+              </td>
             <% end %>
           </tr>
           <% end %>

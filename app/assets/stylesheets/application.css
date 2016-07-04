@@ -65,9 +65,9 @@ ul.nav.navbar-nav.navbar-right li a {
 }
 .devise-content {
   text-align: left;
-  padding-top: 80px;
+  padding-top: 12px;
   height: 700px;
-  margin-left: 50px;
+  margin-left: 400px;
   width: 1200px;
 }
 
@@ -77,6 +77,10 @@ input{
 
 .field {
   padding-bottom: 20px;
+}
+
+.edit{
+  text-align: left;
 }
 
 .subject {
@@ -136,6 +140,10 @@ ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
 
 .activity a {
   text-decoration: none;
+}
+
+.col-md-12.activity {
+  text-align: left;
 }
 
 $size: 50px;

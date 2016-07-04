@@ -1,7 +1,6 @@
-<div class="list">
+<div class="well">
   <p>
   <%= link_to activity.owner.username, activity.owner if activity.owner %>
-  <% if activity.owner == current_user %>
     <% if activity.key.include? "create" %>
       <%= t "activity.create" %>
     <% elsif activity.key.include? "update" %>
@@ -9,10 +8,9 @@
     <% else activity.key.include? "destroy" %>
       <%= t "activity.delete" %>
     <% end %>
-    <%=link_to activity.trackable_type %>
-    <% activity.trackable_id %>
+    <%=link_to activity.trackable_type, activity.trackable %>
+    <%= activity.trackable_id %>|
     <%= time_ago_in_words(activity.created_at) %>
     <%= t "activity.ago" %>
   </p>
-  <% end %>
 </div>

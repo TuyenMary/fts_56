@@ -74,10 +74,10 @@ en:
       btn_update: "Update"
       confirm: "Are you sure?"
       accept: "Accept"
-    login_log: "Admin login email: #{record.email},
-      ip: #{warden.request.remote_ip}, at: #{Time.now}"
-    logout_log: "Admin logout email: #{record.email},
-      ip: #{warden.request.remote_ip}, at: #{Time.now}"
+    login_log: "Admin login email: %{email},
+      ip: %{ip}, at: %{cur_time}"
+    logout_log: "Admin logout email: %{email},
+      ip: %{ip}, at: %{cur_time}"
     exams:
       exam: "Check Exams"
       accept: "Accept"
