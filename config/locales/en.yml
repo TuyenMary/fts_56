@@ -109,5 +109,7 @@ en:
     facebook: "Sign in with Facebook"
   mailers:
     inform: "Please do exam you were created!"
+    greeting: "Hello,"
+    notify: "One subject have just created, let's do it!"
   network:
     share: "Sharing"
