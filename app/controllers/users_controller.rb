@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @activities = PublicActivity::Activity.order(created_at: :desc)
-      .page(params[:page]).per Settings.number
+      .where(owner_id: @user).page(params[:page])
+        .per Settings.number
   end
 end

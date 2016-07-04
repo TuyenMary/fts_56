@@ -9,7 +9,7 @@ this.add_fields = (link, association, content) ->
   $(link).parent().before content.replace(regexp, new_id)
   return
 
-$(document).ready ->
+$(document).on 'ready page:change', ->
   $('.new-question').click ->
     $('#newquestion').slideToggle 'fast'
     return

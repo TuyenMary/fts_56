@@ -44,7 +44,9 @@ class Exam < ActiveRecord::Base
   def calculate_time_from_create_to_update
     time_from_start = self.updated_at - self.created_at
     if time_from_start.to_i < Settings.time_limit
-      Delayed::Job.find_by(created_at: self.created_at).delete
+      if  Delayed::Job.find_by(created_at: self.created_at).present?
+        Delayed::Job.find_by(created_at: self.created_at).delete
+      end
     end
   end
 

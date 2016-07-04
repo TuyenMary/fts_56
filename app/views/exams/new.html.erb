@@ -1,60 +1,58 @@
 <div class="content container">
-  <div class="devise-content">
-    <%= form_tag exams_path, method: :post do %>
-      <%= select_tag "exam[subject_id]",
-        options_from_collection_for_select(@subject, :id, :name, params[:subject_id]) %>
-      <%= submit_tag t("views.user.create"), class: "btn btn-md btn-primary" %>
-    <% end %>
-    </br>
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= t "admin.exams.created_date" %></th>
-            <th><%= t "admin.exams.subject" %></th>
-            <th><%= t "admin.exams.status" %></th>
-            <th><%= t "admin.exams.duration" %></th>
-            <th><%= t "admin.exams.question_number" %></th>
-            <th><%= t "admin.exams.spent_time" %></th>
-            <th><%= t "admin.exams.score" %></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @exams.each do |exam| %>
-          <tr>
-            <td><%= exam.created_at %></td>
-            <td><%= exam.subject.name %></td>
-            <td><label class="label label-success"><%= exam.status %></label></td>
-            <td><%= exam.duration %></td>
-            <td><%= exam.question_number %></td>
-            <td><%= start_time exam %></td>
-            <% if exam.checked? %>
-              <td>
-                <%= exam.results.correct_answers.size %>/
-                <%= exam.question_number %>
-              </td>
-            <% else %>
-              <td><%= Settings.score %>/<%= exam.question_number %></td>
-            <% end %>
-            <% if exam.start? %>
-              <td><%= link_to t("admin.exams.start"), exam_path(exam),
-                class: "col-md-8 btn btn-primary" %></td>
-            <% elsif exam.testing? %>
-              <td><%= link_to t("admin.exams.view"), exam_path(exam),
-                class: "col-md-8 btn btn-warning" %></td>
-            <% elsif exam.saved? %>
-              <td><%= link_to t("admin.exams.view"), exam_path(exam),
-                class: "col-md-8 btn btn-warning" %></td>
-            <% elsif exam.uncheck? %>
-              <td><%= link_to t("admin.exams.view"), exam_path(exam),
-                class: "col-md-8 btn btn-success" %></td>
-            <% end %>
-          </tr>
+  <%= form_tag exams_path, method: :post do %>
+    <%= select_tag "exam[subject_id]",
+      options_from_collection_for_select(@subject, :id, :name, params[:subject_id]) %>
+    <%= submit_tag t("views.user.create"), class: "btn btn-md btn-primary" %>
+  <% end %>
+  </br>
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= t "admin.exams.created_date" %></th>
+          <th><%= t "admin.exams.subject" %></th>
+          <th><%= t "admin.exams.status" %></th>
+          <th><%= t "admin.exams.duration" %></th>
+          <th><%= t "admin.exams.question_number" %></th>
+          <th><%= t "admin.exams.spent_time" %></th>
+          <th><%= t "admin.exams.score" %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each do |exam| %>
+        <tr>
+          <td><%= exam.created_at %></td>
+          <td><%= exam.subject.name %></td>
+          <td><label class="label label-success"><%= exam.status %></label></td>
+          <td><%= exam.duration %></td>
+          <td><%= exam.question_number %></td>
+          <td><%= start_time exam %></td>
+          <% if exam.checked? %>
+            <td>
+              <%= exam.results.correct_answers.size %>/
+              <%= exam.question_number %>
+            </td>
+          <% else %>
+            <td><%= Settings.score %>/<%= exam.question_number %></td>
           <% end %>
-        </tbody>
-      </table>
-      <%= paginate @exams %>
-    </div>
+          <% if exam.start? %>
+            <td><%= link_to t("admin.exams.start"), exam_path(exam),
+              class: "col-md-8 btn btn-primary" %></td>
+          <% elsif exam.testing? %>
+            <td><%= link_to t("admin.exams.view"), exam_path(exam),
+              class: "col-md-8 btn btn-warning" %></td>
+          <% elsif exam.saved? %>
+            <td><%= link_to t("admin.exams.view"), exam_path(exam),
+              class: "col-md-8 btn btn-warning" %></td>
+          <% elsif exam.uncheck? %>
+            <td><%= link_to t("admin.exams.view"), exam_path(exam),
+              class: "col-md-8 btn btn-success" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @exams %>
   </div>
 </div>
