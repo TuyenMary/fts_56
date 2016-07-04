@@ -17,7 +17,7 @@ class Exam < ActiveRecord::Base
 
   before_create :create_questions
   after_save :inform_of_user
-  after_update :calculate_time_from_create_to_update
+  after_update :calculate_time_from_create_to_update, :send_result
 
   accepts_nested_attributes_for :results
 
@@ -46,5 +46,9 @@ class Exam < ActiveRecord::Base
     if time_from_start.to_i < Settings.time_limit
       Delayed::Job.find_by(created_at: self.created_at).delete
     end
+  end
+
+  def send_result
+    EmailWorker.perform_async id if checked?
   end
 end
