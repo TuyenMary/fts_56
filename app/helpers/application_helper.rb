@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def link_to_remove_fields name, f
-    f.hidden_field(:_destroy) + link_to(name, "#",
+    f.hidden_field(:_destroy) + link_to(name, "javascript:void(0)",
       onclick: "remove_fields(this)")
   end
 
@@ -19,7 +19,7 @@ module ApplicationHelper
       end,
       "</div>"
     ].join
-    link_to name, "#", onclick: "return add_fields(this, \"#{association}\",
+    link_to name, "javascript:void(0)", onclick: "return add_fields(this, \"#{association}\",
       \"#{escape_javascript(fields)}\")", class: "btn btn-info btn-block"
   end
 
