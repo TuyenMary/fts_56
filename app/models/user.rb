@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
-  has_many :activities, dependent: :destroy
   has_many :exams, dependent: :destroy
   has_many :results, through: :exams
   has_many :questions, dependent: :destroy
