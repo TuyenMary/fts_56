@@ -6,7 +6,7 @@ class NotifyUser
   def notificate_user
     @users = User.all
     @users.each do |user|
-      UserMailer.notify_user_after_subject_created user, @subject
+      UserMailer.notify_user_after_subject_created(user, @subject).deliver_now
     end
   end
 end
