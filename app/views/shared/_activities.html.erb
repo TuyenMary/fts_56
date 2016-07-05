@@ -2,5 +2,6 @@
    <% @activities.each do |activity| %>
       <%= render "shared/activity", activity: activity %>
    <% end %>
+   <%= render "shared/log" if current_user.admin? %>
    <%= paginate @activities %>
 </div>

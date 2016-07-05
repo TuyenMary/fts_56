@@ -39,4 +39,13 @@ module ApplicationHelper
     end
     Time.at(time).utc.strftime I18n.t("exams.format_time")
   end
+
+  def generate_log
+    f = File.open(File.join(Settings.log_directory, "admin.log"), "r")
+    html_string = ""
+    f.each_line do |line|
+      html_string << "<tr><td> #{line} </td></tr>"
+    end
+    html_string.html_safe
+  end
 end
