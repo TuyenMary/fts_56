@@ -1,16 +1,28 @@
 <% provide :title, t("views.user.alluser") %>
 <h1><%= t "views.user.alluser" %></h1>
-  <table class="table table-striped">
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.username, user_path(user) %></td>
-        <td><%= link_to user.email %></td>
-        <% if can? :delete, user %>
-          <td><%= link_to t("views.user.delete"), admin_user_path(user), method: :delete,
-            data: {confirm: t("views.user.delete")}, class: "btn btn-sm btn-danger" %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </table>
+<%= search_form_for @search, class: "form-inline" do |f| %>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.search_field :username_cont, class: "form-control" %><br/>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.search_field :email_cont, class: "form-control" %><br/>
+  </div>
+  <%= f.submit t("views.user.search"), class: "btn btn-default" %>
+<% end %>
+<table class="table table-striped">
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, user_path(user) %></td>
+      <td><%= link_to user.email %></td>
+      <% if can? :delete, user %>
+        <td><%= link_to t("views.user.delete"), admin_user_path(user), method: :delete,
+          data: {confirm: t("views.user.delete")}, class: "btn btn-sm btn-danger" %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 <%= paginate @users %>

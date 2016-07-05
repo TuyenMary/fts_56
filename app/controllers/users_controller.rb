@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   load_resource
 
   def index
-    @users = User.order(remember_created_at: :desc)
-      .page(params[:page]).per Settings.number
+    @search = User.search params[:q]
+    @users = @search.result.page(params[:page]).per Settings.number
   end
 
   def show
