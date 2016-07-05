@@ -6,8 +6,8 @@ Rails.application.initialize!
 ActionMailer::Base.smtp_settings = {
   user_name: ENV["GMAIL_USERNAME"],
   password: ENV["GMAIL_PASSWORD"],
-  domain: "gmail.com",
-  address: "smtp.gmail.com",
+  domain: "localhost",
+  address: "smtp.sendgrid.net",
   port: 587,
   authentication: :plain,
   enable_starttls_auto: true
