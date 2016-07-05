@@ -25,6 +25,7 @@ gem "whenever", require: false
 gem "sidekiq"
 gem "omniauth-google-oauth2"
 gem "paranoia"
+gem "ransack"
 
 group :development, :test do
   gem "sqlite3"
@@ -34,6 +35,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   gem "web-console", "~> 2.0"
   gem "spring"
   gem "letter_opener"

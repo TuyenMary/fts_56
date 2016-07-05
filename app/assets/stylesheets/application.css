@@ -154,3 +154,11 @@ $size: 50px;
     width: $size;
   }
 }
+
+form#user_search {
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-right: 15px;
+}

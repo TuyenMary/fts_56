@@ -8,7 +8,7 @@
     <% else activity.key.include? "destroy" %>
       <%= t "activity.delete" %>
     <% end %>
-    <%=link_to activity.trackable_type, activity.trackable %>
+    <%= link_to activity.trackable_type, activity.trackable %>
     <%= activity.trackable_id %>|
     <%= time_ago_in_words(activity.created_at) %>
     <%= t "activity.ago" %>

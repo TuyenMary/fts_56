@@ -95,6 +95,7 @@ en:
       danger: "Delete fail"
       create: "Create Exam"
       users: "Users"
+      search: "Search"
     email:
       hi: "Hi"
       thank_for_test: "Thank you for testing"
