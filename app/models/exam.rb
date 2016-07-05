@@ -25,6 +25,10 @@ class Exam < ActiveRecord::Base
     where exams:{status: 3}
   end
 
+  def subject
+    Subject.unscoped {super}
+  end
+
   private
   def create_questions
     self.questions = subject.questions.all

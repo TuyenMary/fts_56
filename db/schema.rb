@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701124738) do
+ActiveRecord::Schema.define(version: 20160705070724) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -67,8 +67,10 @@ ActiveRecord::Schema.define(version: 20160701124738) do
     t.integer  "score"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "exams", ["deleted_at"], name: "index_exams_on_deleted_at"
   add_index "exams", ["subject_id"], name: "index_exams_on_subject_id"
   add_index "exams", ["user_id"], name: "index_exams_on_user_id"
 
@@ -80,8 +82,10 @@ ActiveRecord::Schema.define(version: 20160701124738) do
     t.integer  "question_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "questions", ["deleted_at"], name: "index_questions_on_deleted_at"
   add_index "questions", ["subject_id"], name: "index_questions_on_subject_id"
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
@@ -102,7 +106,10 @@ ActiveRecord::Schema.define(version: 20160701124738) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "subjects", ["deleted_at"], name: "index_subjects_on_deleted_at"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
