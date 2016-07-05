@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
   include PublicActivity::Model
 
+  acts_as_paranoid
+
   enum state: [:waitting, :accepted]
   enum question_type: [:single, :multiple, :text]
 
@@ -17,4 +19,8 @@ class Question < ActiveRecord::Base
     reject_if: proc {|answer| answer[:content].blank?}
 
   validates :content, presence: true
+
+  def subject
+    Subject.unscoped {super}
+  end
 end

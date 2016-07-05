@@ -1,5 +1,7 @@
 class Subject < ActiveRecord::Base
-  has_many :exams, dependent: :destroy
+  acts_as_paranoid
+
+  has_many :exams
   has_many :questions, dependent: :destroy
 
   after_save :notify_user

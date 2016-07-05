@@ -24,6 +24,7 @@ gem "social-share-button"
 gem "whenever", require: false
 gem "sidekiq"
 gem "omniauth-google-oauth2"
+gem "paranoia"
 
 group :development, :test do
   gem "sqlite3"
