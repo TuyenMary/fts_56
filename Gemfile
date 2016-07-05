@@ -26,6 +26,7 @@ gem "sidekiq"
 gem "omniauth-google-oauth2"
 gem "paranoia"
 gem "ransack"
+gem "friendly_id"
 
 group :development, :test do
   gem "sqlite3"

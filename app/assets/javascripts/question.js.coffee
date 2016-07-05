@@ -51,6 +51,26 @@ $(document).on 'ready page:load', ->
   ), 1000
   return
 
+make_radio_from_checkbox = ->
+  $('.radio_answer').click ->
+    if $('#question_question_type').val() == 'single'
+      $('.radio_answer').not(this).attr 'checked', false
+    return
+  $('#question_question_type').on 'change', ->
+    $('.radio_answer').attr 'checked', false
+    return
+  return
+
+ready = ->
+  $('body').on 'DOMNodeInserted', ->
+    make_radio_from_checkbox()
+    return
+  return
+
+$(document).ready ready
+$(document).on 'page:load', ready
+$(document).on 'page:load', make_radio_from_checkbox
+
 jQuery ->
   $.ajax
     url: 'https://apis.google.com/js/client:plus.js?onload=gpAsyncInit'
