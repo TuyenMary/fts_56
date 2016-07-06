@@ -6,7 +6,7 @@
   <% end %>
   </br>
   <div class="container">
-    <table class="table">
+    <table class="table table-bordered">
       <thead>
         <tr>
           <th><%= t "admin.exams.created_date" %></th>
@@ -22,7 +22,7 @@
       <tbody>
         <% @exams.each do |exam| %>
         <tr>
-          <td><%= exam.created_at %></td>
+          <td><%= exam.created_at.strftime("%H:%M:%S") %></td>
           <td><%= exam.subject.name %></td>
           <td><label class="label label-success"><%= exam.status %></label></td>
           <td><%= exam.duration %></td>

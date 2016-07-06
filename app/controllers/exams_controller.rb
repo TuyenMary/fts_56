@@ -1,6 +1,7 @@
 class ExamsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
+  before_action :user_validation, only: [:show]
 
   def new
     @exam = Exam.new
@@ -45,5 +46,12 @@ class ExamsController < ApplicationController
   def exam_params
     params.require(:exam).permit :subject_id,
       results_attributes: [:id, :answer_id]
+  end
+
+  def user_validation
+    if current_user.exams.find_by(id: params[:id]).nil?
+      redirect_to new_exam_path
+      flash[:notice] = t "exams.show.notice"
+    end
   end
 end
