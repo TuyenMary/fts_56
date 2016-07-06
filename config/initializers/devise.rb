@@ -250,19 +250,20 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   # end
+
   config.warden do |manager|
     Warden::Manager.after_set_user except: :fetch do |record, warden, options|
       if record.respond_to?(:update_tracked_fields!) && warden.authenticated?(options[:scope])
         if record.admin?
-          Rails.logger.info I18n.t "admin.login_log", ip: warden.request.remote_ip,
-            email: record.email, cur_time: Time.now
+            CUSTOM_LOGGER.info I18n.t "admin.login_log", ip: warden.request.remote_ip,
+              email: record.email, cur_time: Time.now
         end
       end
     end
 
     Warden::Manager.before_logout do |record, warden, options|
       if record.admin?
-        Rails.logger.info I18n.t "admin.logout_log", ip: warden.request.remote_ip,
+        CUSTOM_LOGGER.info I18n.t "admin.logout_log", ip: warden.request.remote_ip,
           email: record.email, cur_time: Time.now
       end
     end
