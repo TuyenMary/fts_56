@@ -54,6 +54,7 @@ en:
       finish: "Finish"
       success: "Success"
       fail: "Fail"
+      notice: "Sorry, This exam not belong to you"
     format_time: "%H:%M:%S"
   admin:
     subject:
