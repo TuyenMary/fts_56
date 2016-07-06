@@ -1,8 +1,9 @@
 class Admin::SubjectsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
+  before_action :load_subject, only: [:edit, :destroy, :update, :show]
 
   def index
-    @subjects = Subject.order(created_at: :desc)
+    @subjects = Subject.friendly.order(created_at: :desc)
       .page(params[:page]).per Settings.number
   end
 
@@ -52,6 +53,10 @@ class Admin::SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.require(:subject).permit :name, :description
+    params.require(:subject).permit :name, :description, :slug
+  end
+
+  def load_subject
+    @subject = Subject.friendly.find params[:id]
   end
 end
