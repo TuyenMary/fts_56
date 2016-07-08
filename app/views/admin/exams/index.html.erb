@@ -1,41 +1,63 @@
 <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= t "admin.exams.created_date" %></th>
-            <th><%= t "admin.exams.subject" %></th>
-            <th><%= t "admin.exams.status" %></th>
-            <th><%= t "admin.exams.duration" %></th>
-            <th><%= t "admin.exams.question_number" %></th>
-            <th><%= t "admin.exams.spent_time" %></th>
-            <th><%= t "admin.exams.score" %></th>
-            <th><%= t "admin.exams.check" %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @exams.each do |exam| %>
-          <tr>
-            <td><%= exam.created_at.strftime("%H:%M:%S") %></td>
-            <td><%= exam.subject.name %></td>
-            <td><label class="label label-success"><%= exam.status %></label></td>
-            <td><%= exam.duration %></td>
-            <td><%= exam.question_number %></td>
-            <td><%= start_time exam %></td>
-            <% if exam.uncheck? %>
-              <td>
-                <%= exam.results.correct_answers.size %>|
-                <%= exam.question_number %>
-              </td>
-              <td>
-                <%= form_tag admin_exam_path(exam), method: :put do %>
-                  <%= submit_tag :checked,
-                    class: "col-md-8 btn btn-success" %>
-                <% end %>
-              </td>
+  <div id="form">
+    <span class="glyphicon glyphicon-search", id="search"></span>
+      <div id= "form_search">
+        <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+          <div class="form-group">
+            <%= f.label :status %>
+            <%= f.search_field :status_cont, class: "form-control" %><br/>
+          </div>
+
+           <%= f.submit t("views.user.search"), class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
+  </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><%= t "admin.exams.created_date" %></th>
+          <th><%= t "admin.exams.subject" %></th>
+          <th><%= t "admin.exams.status" %></th>
+          <th><%= t "admin.exams.duration" %></th>
+          <th><%= t "admin.exams.question_number" %></th>
+          <th><%= t "admin.exams.spent_time" %></th>
+          <th><%= t "admin.exams.score" %></th>
+          <th><%= t "admin.exams.action" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @exams.each do |exam| %>
+        <tr class="success">
+          <td><%= exam.created_at.strftime("%H:%M:%S") %></td>
+          <td><%= exam.subject.name %></td>
+          <td>
+            <% if exam.checked? %>
+              <label class="label label-success"> <%= exam.status %></label>
+            <% elsif exam.uncheck? %>
+              <label class="label label-primary"><%= exam.status %></label>
+            <% elsif exam.testing? || exam.saved? %>
+              <label class="label label-warning"><%= exam.status %></label>
+            <% else %>
+              <label class="label label-info"><%= exam.status %></label>
             <% end %>
-          </tr>
+          </td>
+          <td><%= exam.duration %></td>
+          <td><%= exam.question_number %></td>
+          <td><%= start_time exam %></td>
+          <% if exam.checked? %>
+            <td>
+              <%= exam.results.correct_answers.size %>|
+              <%= exam.question_number %>
+            </td>
+          <% else %>
+            <td><%= Settings.score %>/<%= exam.question_number %></td>
           <% end %>
-        </tbody>
-      </table>
-      <%= paginate @exams %>
-    </div>
+            <td>
+              <%= link_to "Show", admin_exam_path(exam), class: "btn btn-success" %>
+            </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @exams %>
+</div>

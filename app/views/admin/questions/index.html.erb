@@ -1,51 +1,64 @@
-<div class="content container">
-  <div class="col-md-10 col-md-offset-1 width-flash">
-  </div>
+<div class="container">
   <div class="row" id="question">
-    <div class="col-md-10 col-md-offset-1">
-      <span>
-        <h1 class="new-question"><%= t "admin.question.new_q" %></h1>
-        <h1><%= t "admin.question.title" %></h1>
-      </span>
-      <table class="table">
-        <thead>
-          <tr>
-            <th><%= t ".stt" %></th>
-            <th><%= t ".question" %></th>
-            <th><%= t ".subject" %></th>
-            <th><%= t ".question_type" %></th>
-            <th><%= t ".state" %></th>
-            <th><%= t ".action" %></th>
-          </tr>
-        </thead>
-        <% @questions.each_with_index do |question, index| %>
-          <tbody>
-            <tr>
-              <td><%= index %></td>
-              <div class="truncate"><td><%= link_to question.content,
-                admin_question_path(question) %></td></div>
-              <td><%= question.subject.name %></td>
-              <td><%= question.question_type %></td>
-              <td class="btn btn-warning disabled"><%= question.state %></td>
+    <div id="form">
+    <span class="glyphicon glyphicon-search", id="search"></span>
+      <div id= "form_search">
+        <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+          <div class="form-group">
+            <%= f.label :state %>
+            <%= f.search_field :state_cont, class: "form-control" %><br/>
+          </div>
+
+           <%= f.submit t("views.user.search"), class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <span>
+    <span class= "new-question glyphicon glyphicon-plus"><%= t "admin.question.new_q" %></span>
+      <center><h1><%= t "admin.question.title" %></h1></center>
+    </span>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><%= t ".stt" %></th>
+          <th><%= t ".question" %></th>
+          <th><%= t ".subject" %></th>
+          <th><%= t ".question_type" %></th>
+          <th><%= t ".state" %></th>
+          <th><%= t ".action" %></th>
+        </tr>
+      </thead>
+      <% @questions.each_with_index do |question, index| %>
+        <tbody>
+          <tr class="success">
+            <td><%= index %></td>
+            <div class="truncate"><td><%= link_to question.content,
+              admin_question_path(question) %></td></div>
+            <td><%= question.subject.name %></td>
+            <td><%= question.question_type %></td>
+            <td><span class="btn btn-warning disabled"><%= question.state %></span></td>
+            <td>
+              <%= link_to "", edit_admin_question_path(question),
+                class: "glyphicon glyphicon-edit icon-padding link-underline" %>
+              <%= link_to "", admin_question_path(question), method: :delete, data:
+                {confirm: t("admin.question.confirm")}, class:
+                  "glyphicon glyphicon-trash text-danger icon-padding link-underline " %>
+            </td>
+              <% if question.waitting? %>
               <td>
-                <%= link_to "", edit_admin_question_path(question),
-                  class: "glyphicon glyphicon-edit icon-padding link-underline" %>
-                <%= link_to "", admin_question_path(question), method: :delete, data:
-                  {confirm: t("admin.question.confirm")}, class:
-                    "glyphicon glyphicon-trash icon-padding link-underline" %>
-                <% if question.waitting? %>
-                  <%= form_for [:admin, question] do |f| %>
-                    <%= f.hidden_field :state, value: :accepted %>
-                    <%= f.submit t("admin.question.accept"), class: "col-md-8 btn btn-success" %>
-                  <% end %>
+                <%= form_for [:admin, question] do |f| %>
+                  <%= f.hidden_field :state, value: :accepted %>
+                  <%= f.submit t("admin.question.accept"), class: "col-md-8 btn btn-success" %>
                 <% end %>
               </td>
-            </tr>
-          </tbody>
-        <% end %>
-      </table>
-      <%= paginate @questions %>
-    </div>
+            <% else %>
+              <td></td>
+            <% end %>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+    <%= paginate @questions %>
   </div>
   <div class="row" id="newquestion">
     <%= render "new" %>

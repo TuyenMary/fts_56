@@ -3,11 +3,12 @@ class ExamsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_validation, only: [:show]
 
-  def new
+  def index
     @exam = Exam.new
     @subject = Subject.all
-    @exams = current_user.exams.order(created_at: :desc).page(params[:page])
-      .per Settings.number
+    @search = current_user.exams.search params[:q]
+    @exams = @search.result.order(created_at: :desc)
+      .page(params[:page]).per Settings.number
   end
 
   def show
@@ -23,7 +24,7 @@ class ExamsController < ApplicationController
     @exam = current_user.exams.new exam_params
     if @exam.save
       flash[:notice] = t "exams.show.success"
-      redirect_to new_exam_path
+      redirect_to exams_path
     else
       flash[:alert] = t "exams.show.fail"
       redirect_to :back
@@ -35,7 +36,7 @@ class ExamsController < ApplicationController
     @exam.time_end = Time.now.to_i
     if @exam.update_attributes exam_params
       flash.now[:success] = t "exams.show.success"
-      redirect_to new_exam_path
+      redirect_to exams_path
     else
       flash.now[:danger] = t "exams.show.fail"
       redirect_to :back
@@ -50,7 +51,7 @@ class ExamsController < ApplicationController
 
   def user_validation
     if current_user.exams.find_by(id: params[:id]).nil?
-      redirect_to new_exam_path
+      redirect_to exams_path
       flash[:notice] = t "exams.show.notice"
     end
   end

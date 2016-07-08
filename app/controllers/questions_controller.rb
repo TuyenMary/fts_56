@@ -1,8 +1,10 @@
 class QuestionsController < ApplicationController
-  load_resource
+  load_and_authorize_resource
+  skip_authorize_resource :only => :index
 
   def index
-    @questions = current_user.questions.order(created_at: :desc)
+    @search = current_user.questions.search params[:q]
+    @questions = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.number
   end
 

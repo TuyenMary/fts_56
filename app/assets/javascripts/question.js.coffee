@@ -9,10 +9,22 @@ this.add_fields = (link, association, content) ->
   $(link).parent().before content.replace(regexp, new_id)
   return
 
-$(document).on 'ready page:load', ->
-  $('.new-question').click ->
+ $(document).ready ->
+   $('.new-question').click ->
     $('#newquestion').slideToggle 'fast'
     return
+
+$(document).ready ->
+  $('#search').click ->
+    $('#form_search').slideToggle()
+    return
+
+$(document).ready ->
+  setTimeout (->
+    $('.flash').slideUp 'slow'
+    return
+  ), 1500
+  return
 
 $(document).on 'ready page:load', ->
   clock = $('#clock')

@@ -8,7 +8,7 @@
           <li><%= link_to t("admin.subject.subject"), admin_subjects_path %></li>
           <li><%= link_to t("admin.exams.exam"), admin_exams_path %></li>
         <% else %>
-          <li><%= link_to t("header.home"), new_exam_path %></li>
+          <li><%= link_to t("header.home"), exams_path %></li>
         <% end %>
         <% if user_signed_in? %>
           <li><%= link_to t(".suggest_question"), questions_path %></li>

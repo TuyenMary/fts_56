@@ -31,7 +31,7 @@ en:
     login: "Login"
     signout: "Sign out"
     suggest_question: "Suggest Question"
-    profile: profile
+    profile: Profile
     edit: Edit
   footer:
     content: "Framgia Test"
@@ -59,7 +59,7 @@ en:
   admin:
     subject:
       subject: "Subject"
-      new: "Add subject"
+      new: "Create new subject"
       allsubject: "All subjects"
       edit: "Edit"
       call: "Delete"
@@ -68,6 +68,9 @@ en:
       savechange: "Save change"
       deletesuccess: "Delete Success"
       deletefail: "Delete fail"
+      name: "Name"
+      des: "Description"
+      action: "Action"
     question:
       title: "Question List"
       new_q: "New Question"
@@ -90,20 +93,23 @@ en:
       first: "First"
       last: "Last"
     user:
-      alluser: "All user"
+      alluser: "All users"
       delete: "Delete"
       success: "Delete success"
       danger: "Delete fail"
       create: "Create Exam"
       users: "Users"
       search: "Search"
+      username: "Name"
+      email: "Email"
+      action: "Action"
     email:
       hi: "Hi"
       thank_for_test: "Thank you for testing"
       your_score: "Your score is :"
       have_niceday: "Have a nice day"
   registrations:
-    edit: "Edit"
+    edit: "Edit "
     update: "Update"
     cancel_my_account: "Cancel my Acount"
     confirmation: "Are you sure"

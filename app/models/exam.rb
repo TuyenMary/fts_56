@@ -21,10 +21,6 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :results
 
-  scope :search_exams, -> do
-    where exams:{status: 3}
-  end
-
   def subject
     Subject.unscoped {super}
   end

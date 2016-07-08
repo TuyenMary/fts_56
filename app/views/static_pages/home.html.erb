@@ -1,8 +1,10 @@
 <div class="center jumbotron">
   <div id="content">
     <h1><%= t "static_pages.wellcome" %></h1>
-    <%= link_to t("static_pages.signup"), new_user_registration_path,
-      class: "btn btn-lg btn-primary" %>
+    <% if !user_signed_in? %>
+      <%= link_to t("static_pages.signup"), new_user_registration_path,
+        class: "btn btn-lg btn-primary" %>
+    <% end %>
   </div>
 </div>
 <%= social_share_button_tag t("network.sharing") %>

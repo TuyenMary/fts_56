@@ -8,6 +8,7 @@ class Ability
     else
       can :read, Subject
       can [:create, :show, :read, :update], Exam
+      can [:read], Question
     end
   end
 end

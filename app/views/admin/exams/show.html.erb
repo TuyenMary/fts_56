@@ -1,0 +1,24 @@
+<h4>
+  <%= t ".created_at" %>
+  <%= @exam.created_at %>
+</h4>
+<div class="row">
+  <div class="col-md-6 col-md-offset-1">
+    <%= form_for @exam do |f| %>
+       <ol>
+          <%= f.fields_for :results do |result| %>
+            <%= render "question", f: result %>
+          <% end %>
+      </ol>
+    <% end %>
+    <div>
+      <p>Score:
+        <%= @exam.results.correct_answers.size %>|
+        <%= @exam.question_number %></p>
+    </div>
+
+    <%= form_tag admin_exam_path(@exam), method: :put do %>
+      <%= submit_tag :checked, class: " btn btn-md btn-success" %>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,8 @@ class Admin::QuestionsController < ApplicationController
   before_action :load_subject, only: [:index, :edit, :update]
 
   def index
-    @questions = @questions.order(created_at: :desc)
+    @search = Question.search params[:q]
+    @questions = @search.result.order(created_at: :desc)
       .page(params[:page]).per Settings.number
     @question = Question.new
     @question.answers.build

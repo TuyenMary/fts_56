@@ -125,6 +125,35 @@ ul.dropdown-menu  > li > a:hover, ul.dropdown-menu  > li > a:focus {
 .new-question {
   float: left;
   color: #428bca;
+  font-size: 30px;
+}
+
+#new {
+  display: none;
+}
+
+#wrapper{
+  opacity: 0.6;
+  height: 100%;
+  width: 100%;
+  display: none;
+  background-color: black;
+  position: absolute;
+}
+
+.new_question label {
+  position: absolute;
+  color: white;
+}
+
+input.btn.btn-sm.btn-primary {
+  width: 100px;
+}
+
+form#user_search {
+  float: left;
+}
+
 }
 
 .tableshow {
@@ -180,4 +209,64 @@ form#user_search {
 
 .table, th, td{
   text-align: left;
+}
+
+ul.nav.navbar-nav.navbar-right li a:hover {
+  color: #240B3B;
+}
+
+li.dropdown.open > a:focus {
+  background-color:transparent;
+}
+
+a.glyphicon.glyphicon-plus {
+  float: left;
+}
+
+.content {
+  text-align: left;
+  margin-left: 123px;
+}
+
+input.btn.btn-md.btn-success {
+  width: 80px;
+}
+
+input#score {
+  width: 70px;
+}
+
+#search {
+  float: left;
+  font-size: xx-large;
+  margin-bottom: 18px;
+  text-decoration: none;
+}
+
+div#form_search {
+  float: left;
+  margin-left: 20px;
+  display: none;
+}
+
+.success {
+  background-color: #81F7F3;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.danger {
+  background-color: #F5A9BC;
+  height: 50px;
+  border-radius: 10px;
+}
+
+#form {
+  margin-top: 20px;
+}
+
+.content-form form {
+  float: left;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

@@ -1,8 +1,12 @@
 class Admin::ExamsController < ApplicationController
   load_and_authorize_resource
   def index
-    @exams = Exam.search_exams.page(params[:page])
-      .per Settings.number
+    @search = Exam.search params[:q]
+    @exams = @search.result.order(created_at: :desc)
+      .page(params[:page]).per Settings.number
+  end
+
+  def show
   end
 
   def update

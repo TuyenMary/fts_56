@@ -1,27 +1,38 @@
 <% provide :title, t("admin.subject.allsubject") %>
+<div class="container">
 <%= link_to t("admin.subject.new"), new_admin_subject_path,
-  class: "btn btn-lg btn-primary" %>
+  class: "glyphicon glyphicon-plus" %>
 <h1><%= t "admin.subject.allsubject" %></h1>
-  <table class="table table-striped">
-    <% @subjects.each do |subject| %>
+  <table class="table table-bordered">
+    <thead>
       <tr>
+        <th><%= t "admin.subject.name" %></th>
+        <th><%= t "admin.subject.des" %></th>
+        <th><%= t "admin.subject.action" %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @subjects.each do |subject| %>
+      <tr class="success">
         <td><%= link_to subject.name %></td>
         <td><%= subject.description %></td>
-        <% if can? :edit, subject %>
-          <td><%= link_to t("admin.subject.edit"), edit_admin_subject_path(subject),
-            class:"btn btn-sm btn-info" %>
-          </td>
-        <% end %>
-        <% if can? :destroy, subject %>
-          <td><%= link_to t("admin.subject.delete"), admin_subject_path(subject),
-            method: :delete, data: {confirm: t("admin.subject.call")},
-              class: "btn btn-sm btn-danger" %>
-          </td>
-        <% end %>
         <td>
-          <%= link_to t("admin.question.new_q"), admin_questions_path %>
+          <% if can? :edit, subject %>
+            <%= link_to "", edit_admin_subject_path(subject),
+              class:"glyphicon glyphicon-edit icon-padding link-underline" %>
+          <% end %>
+          <% if can? :destroy, subject %>
+            <%= link_to "", admin_subject_path(subject),
+              method: :delete, data: {confirm: t("admin.subject.call")},
+                class: "glyphicon glyphicon-trash icon-padding link-underline text-danger" %>
+          <% end %>
         </td>
+        <td><%= link_to t("admin.question.new_q"), admin_questions_path,
+          class: "glyphicon glyphicon-plus" %></td>
       </tr>
     <% end %>
+    </tbody>
   </table>
+</div>
 <%= paginate @subjects %>
